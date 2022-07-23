@@ -233,6 +233,82 @@ class Controller {
             next(err)
         }
     }
+
+    static async updateMovie(req, res, next) {
+        try {
+            const { id } = req.params;
+            const { title, synopsis, rating, genreId, slug, imgUrl, trailerUrl, authorId } = req.body;
+            const updateMovie = await Movie.update({
+                title,
+                slug,
+                synopsis,
+                trailerUrl,
+                imgUrl,
+                rating,
+                genreId,
+                authorId
+            }, {
+                where: {
+                    id
+                }
+            });
+            return res.status(200).json({
+                message: 'Movie updated successfully',
+                movie: {
+                    id,
+                    title,
+                    synopsis,
+                    trailerUrl,
+                    imgUrl,
+                    rating,
+                    genreId,
+                    authorId
+                }
+            });
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async deleteMovie(req, res, next) {
+        try {
+            const { id } = req.params;
+            const deleteMovie = await Movie.destroy({
+                where: {
+                    id
+                }
+            });
+            return res.status(200).json({
+                message: 'Movie deleted successfully'
+            });
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async getAllGenres(req, res, next) {
+        try {
+            const genres = await Genre.findAll();
+            return res.status(200).json(genres);
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async getGenreById(req, res, next) {
+        try {
+            const { id } = req.params;
+            const genre = await Genre.findOne({
+                where: {
+                    id
+                }
+            });
+            return res.status(200).json(genre);
+        } catch (err) {
+            next(err)
+        }
+    }
+
 }
 
 module.exports = Controller;

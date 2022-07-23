@@ -1,0 +1,15 @@
+export const TOGGLE_MODAL = "toggleModal";
+export const FORM_TYPE_CREATE = "formTypeCreate";
+export const FORM_TYPE_UPDATE = "formTypeUpdate";
+export const MOVIE_CASTS = "movieCasts";
+export const MOVIE_SYNOPSIS = "movieSynopsis";
+export const GENRE_READ = "genre/readSuccess";
+export const GENRE_READ_ONE = "genre/readOneSuccess";
+// export const GENRE_DELETE = "genre/deleteSuccess";
+// export const GENRE_CREATE = "genre/createSuccess";
+// export const GENRE_UPDATE = "genre/editSuccess";
+export const MOVIE_READ = "movie/readSuccess";
+export const MOVIE_READ_ONE = "movie/readOneSuccess";
+// export const MOVIE_DELETE = "movie/deleteSuccess";
+// export const MOVIE_CREATE = "movie/createSuccess";
+// export const MOVIE_UPDATE = "movie/editSuccess";

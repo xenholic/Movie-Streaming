@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import AddAdminPage from "./pages/AddAdminPage";
+import HomePage from "./pages/HomePage";
+import GenrePage from "./pages/GenrePage";
+import LoginPage from "./pages/LoginPage";
+import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute2 from "./components/ProtectedRoute2";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route
+          path="/login"
+          // ProtectedRoute2 untuk mencegah admin yang sudah login mengakses halaman login
+          element={
+            <ProtectedRoute2>
+              <LoginPage />
+            </ProtectedRoute2>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/genres"
+          element={
+            <ProtectedRoute>
+              <GenrePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/addAdmin"
+          element={
+            <ProtectedRoute>
+              <AddAdminPage />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </div>
   );
 }
